@@ -1,25 +1,66 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import HomeContainer from './containers/home_container'
+import ShowContainer from './containers/show_movie_container'
+
+
+class App extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state= {
+      all_movies: []
+
+    }
+
+  }
+
+
+  componentDidMount(){
+    console.log('hi')
+      fetch('http://localhost:3000/movies')
+        .then(res=> res.json())
+        .then(resp=>{
+          debugger
+        console.log(resp)
+      })
+    
+
+  }
+
+
+
+  
+
+
+  render () {
+    return (
+      <div className="App">
+
+
+       <Router>
+         <Route exact path ='/'>
+           <HomeContainer movie_arr = {this.state.all_movies}/>
+         </Route>
+
+
+
+       </Router>
+      </div>
+    );
+  }
+
+
+
 }
 
 export default App;
