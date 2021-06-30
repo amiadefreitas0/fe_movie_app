@@ -1,5 +1,5 @@
 import React from 'react';
-
+import NavBarComponent from '../component/nav_bar_component'
 
 
 class HomeContainer extends React.Component {
@@ -10,8 +10,9 @@ class HomeContainer extends React.Component {
         return(
 
             <div class = 'home_container'>
-                
+                <NavBarComponent/>
 
+            
 
 
             </div>

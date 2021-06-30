@@ -21,25 +21,15 @@ class App extends React.Component{
       all_movies: []
 
     }
-
-  }
-
-
-  componentDidMount(){
-    console.log('hi')
-      fetch('http://localhost:3000/movies')
-        .then(res=> res.json())
-        .then(resp=>{
-          debugger
-        console.log(resp)
+    fetch('http://localhost:3000/movies')
+      .then(res=> res.json())
+      .then(resp=>{
+        this.setState({
+          all_movies: resp
+        })
       })
-    
-
   }
 
-
-
-  
 
 
   render () {
